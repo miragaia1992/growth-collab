@@ -70,6 +70,17 @@
   .cta a:hover { background: #1a28b8; }
   .cta a svg { width: 18px; height: 18px; }
 
+  /* Instagram feed */
+  .ig { background: var(--cream); padding: 72px 24px; display: none; }
+  .ig .inner { max-width: 880px; margin: 0 auto; }
+  .ig .label { margin-bottom: 22px; color: #555; }
+  .ig .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .ig .grid a { display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #ddd8c9; }
+  .ig .grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease, opacity 0.35s ease; }
+  .ig .grid a:hover img { transform: scale(1.04); opacity: 0.92; }
+  .ig .follow { display: inline-block; margin-top: 22px; font-size: 12px; letter-spacing: 0.25em; color: var(--blue); text-decoration: none; font-weight: 500; }
+  .ig .follow:hover { text-decoration: underline; }
+
   footer { background: var(--ink); color: var(--cream); text-align: center; padding: 18px; font-size: 13px; }
 
   @media (max-width: 640px) {
@@ -154,6 +165,14 @@
   <p>We only win when you grow. That's the collab.</p>
 </section>
 
+<section class="ig" id="instagram">
+  <div class="inner">
+    <p class="label caption">LATEST ON INSTAGRAM</p>
+    <div class="grid" id="ig-grid"></div>
+    <a class="follow" href="https://www.instagram.com/growth.collab/" target="_blank" rel="noopener">@GROWTH.COLLAB →</a>
+  </div>
+</section>
+
 <section class="cta">
   <h2>Let's talk on WhatsApp</h2>
   <a href="https://wa.me/351917245807" target="_blank" rel="noopener">
@@ -163,6 +182,23 @@
 </section>
 
 <footer>© 2026 Growth Collab</footer>
+
+<script>
+fetch('https://feeds.behold.so/XQN0kLlcmiVEgD0EtniY')
+  .then(r => r.json())
+  .then(data => {
+    const posts = (data.posts || []).slice(0, 3);
+    if (!posts.length) return;
+    const grid = document.getElementById('ig-grid');
+    grid.innerHTML = posts.map(p => {
+      const img = p.thumbnailUrl || p.mediaUrl;
+      const alt = (p.caption || 'Instagram post').split('\n')[0].slice(0, 100);
+      return '<a href="' + p.permalink + '" target="_blank" rel="noopener"><img src="' + img + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
+    }).join('');
+    document.getElementById('instagram').style.display = 'block';
+  })
+  .catch(() => {});
+</script>
 
 </body>
 </html>
