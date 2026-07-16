@@ -32,9 +32,7 @@
   .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .hero .overlay { position: absolute; inset: 0; background: rgba(18, 24, 44, 0.5); }
   .hero .top-bar { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; z-index: 2; }
-  .hero .top-bar .brand { display: inline-block; text-align: right; line-height: 1; }
-  .hero .top-bar .brand .g { font-family: 'Monument Extended', sans-serif; font-weight: 800; font-size: 15px; color: var(--lime); display: block; }
-  .hero .top-bar .brand .c { font-family: 'Now', sans-serif; font-weight: 300; font-size: 9px; letter-spacing: 0.42em; color: var(--lime); display: block; margin-top: 3px; }
+  .hero .top-bar .brand img { height: 30px; display: block; }
   .hero .top-bar .tag { font-size: 11px; letter-spacing: 0.25em; color: var(--lime); font-weight: 500; }
   .hero .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px; z-index: 2; }
   .hero .center .big { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--lime); font-size: clamp(30px, 6.2vw, 76px); line-height: 1.04; font-weight: 800; }
@@ -91,7 +89,7 @@
   </video>
   <div class="overlay"></div>
   <div class="top-bar">
-    <span class="brand"><span class="g">GROWTH</span><span class="c">COLLAB</span></span>
+    <span class="brand"><img src="assets/logo.png" alt="Growth Collab"></span>
     <span class="tag">NOT AN AGENCY</span>
   </div>
   <div class="center">
