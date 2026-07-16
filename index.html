@@ -50,10 +50,12 @@
   .what .inner { max-width: 880px; margin: 0 auto; }
   .what .label { margin-bottom: 10px; color: #555; }
   .what .rows { border-bottom: 1px solid var(--ink); }
-  .row { display: flex; align-items: baseline; gap: 20px; padding: 26px 0; border-top: 1px solid var(--ink); }
-  .row .num { font-size: 13px; color: #555; min-width: 28px; }
-  .row .name { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(15px, 2.6vw, 24px); flex: 1; line-height: 1.15; font-weight: 800; }
-  .row .desc { font-size: 13px; color: #555; text-align: right; }
+  .row { display: flex; align-items: flex-start; gap: 20px; padding: 30px 0; border-top: 1px solid var(--ink); }
+  .row .num { font-size: 13px; color: #555; min-width: 28px; padding-top: 4px; }
+  .row .name { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(15px, 2.6vw, 24px); line-height: 1.15; font-weight: 800; margin: 0 0 12px; }
+  .service { flex: 1; }
+  .service-desc { font-size: 15px; line-height: 1.65; color: #333; max-width: 640px; margin: 0 0 14px; }
+  .service-keys { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #555; margin: 0; font-weight: 500; }
 
   /* Statement */
   .statement { background: var(--blue); padding: 96px 24px; text-align: center; }
@@ -104,7 +106,7 @@
 </header>
 
 <div class="marquee" aria-hidden="true">
-  <span class="track">&nbsp;GROWTH MARKETING • WEB • CONTENT • LEADS • SEO • SOCIAL MEDIA • DESIGN •&nbsp;GROWTH MARKETING • WEB • CONTENT • LEADS • SEO • SOCIAL MEDIA • DESIGN •</span>
+  <span class="track">&nbsp;BUSINESS STRATEGY • PRESS • CONTENT CREATION • WEBSITE OPTIMIZATION • INFLUENCER MARKETING • LEADS STRATEGY • DESIGN • SOCIAL MEDIA • EVENTS • PAID MEDIA • BRANDING •&nbsp;BUSINESS STRATEGY • PRESS • CONTENT CREATION • WEBSITE OPTIMIZATION • INFLUENCER MARKETING • LEADS STRATEGY • DESIGN • SOCIAL MEDIA • EVENTS • PAID MEDIA • BRANDING •</span>
 </div>
 
 <section class="what">
@@ -113,18 +115,11 @@
     <div class="rows">
       <div class="row">
         <span class="num">01</span>
-        <span class="name">Make you money</span>
-        <span class="desc">growth · leads · sales</span>
-      </div>
-      <div class="row">
-        <span class="num">02</span>
-        <span class="name">Make you pretty</span>
-        <span class="desc">web · design · content</span>
-      </div>
-      <div class="row">
-        <span class="num">03</span>
-        <span class="name">Make you found</span>
-        <span class="desc">seo · social media</span>
+        <div class="service">
+          <h3 class="name">Digital Marketing Team</h3>
+          <p class="service-desc">Your external, internal digital department. Our clients work directly with the people who both think and execute (there are no Key Account Managers), allowing for greater proximity, agility and alignment throughout the entire process.</p>
+          <p class="service-keys">strategy · growth · collab</p>
+        </div>
       </div>
     </div>
   </div>
