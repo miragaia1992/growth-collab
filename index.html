@@ -57,11 +57,9 @@
   .row .num { font-size: 13px; color: #555; min-width: 28px; padding-top: 4px; }
   .row .name { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(15px, 2.6vw, 24px); line-height: 1.15; font-weight: 800; margin: 0 0 12px; }
   .service { flex: 1; min-width: 0; }
-  .service-desc { font-size: 15px; line-height: 1.65; color: #333; margin: 0; }
-  .service-keys { flex: 0 0 auto; width: 190px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin: 0; font-weight: 500; text-align: right; padding-top: 6px; line-height: 1.8; }
-  @media (max-width: 720px) {
-    .service-keys { display: none; }
-  }
+  .service-desc { font-size: 15px; line-height: 1.65; color: #333; margin: 0; max-width: 640px; }
+  .service-keys { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
+  .service-keys span { border: 1px solid var(--blue); color: var(--blue); border-radius: 999px; padding: 7px 16px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
 
   /* Statement */
   .statement { background: var(--blue); padding: 96px 24px; text-align: center; }
@@ -136,32 +134,32 @@
         <div class="service">
           <h3 class="name">Digital Marketing Team</h3>
           <p class="service-desc">Your external, internal digital department. Our clients work directly with the people who both think and execute (there are no Key Account Managers), allowing for greater proximity, agility and alignment throughout the entire process.</p>
+          <div class="service-keys"><span>strategy</span><span>growth</span><span>collab</span></div>
         </div>
-        <p class="service-keys">strategy · growth · collab</p>
       </div>
       <div class="row">
         <span class="num">02</span>
         <div class="service">
           <h3 class="name">Events that go Digital</h3>
           <p class="service-desc">We capture and amplify your events through live coverage and premium content, extending their impact far beyond the day.</p>
+          <div class="service-keys"><span>live coverage</span><span>content</span><span>social amplification</span></div>
         </div>
-        <p class="service-keys">live coverage · content · social amplification</p>
       </div>
       <div class="row">
         <span class="num">03</span>
         <div class="service">
           <h3 class="name">On-Demand Reels</h3>
           <p class="service-desc">Need fresh content for your social channels? Book a content session and our creators will produce authentic, on-brand organic reels directly at your location, ready to post.</p>
+          <div class="service-keys"><span>organic videos</span><span>trends</span><span>content creation</span></div>
         </div>
-        <p class="service-keys">organic videos · trends · content creation</p>
       </div>
       <div class="row">
         <span class="num">04</span>
         <div class="service">
           <h3 class="name">Business Consultancy</h3>
           <p class="service-desc">A strategic working session where we analyse your business, identify opportunities and challenges, and provide practical business recommendations you can start implementing immediately.</p>
+          <div class="service-keys"><span>strategy</span><span>growth</span><span>action plan</span></div>
         </div>
-        <p class="service-keys">strategy · growth · action plan</p>
       </div>
     </div>
   </div>
