@@ -91,18 +91,32 @@
   .marquee .track { display: inline-block; font-family: 'Monument Extended', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--blue); animation: scroll 22s linear infinite; }
   @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* What we do */
+  /* What we do — services + the collab difference */
   .what { background: var(--cream); padding: 72px 24px; }
   .what .inner { max-width: 880px; margin: 0 auto; }
-  .what .label { margin-bottom: 10px; color: #555; }
-  .what .rows { border-bottom: 1px solid var(--ink); }
-  .row { display: flex; align-items: flex-start; gap: 24px; padding: 30px 0; border-top: 1px solid var(--ink); }
-  .row .num { font-size: 13px; color: #555; min-width: 28px; padding-top: 4px; }
-  .row .name { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(15px, 2.6vw, 24px); line-height: 1.15; font-weight: 800; margin: 0 0 12px; }
-  .service { flex: 1; min-width: 0; }
-  .service-desc { font-size: 15px; line-height: 1.65; color: #333; margin: 0; max-width: 640px; }
+  .what .label { margin-bottom: 22px; color: #6b6b6b; }
+  .also { background: var(--cream); padding: 12px 24px 72px; }
+  .also .inner { max-width: 880px; margin: 0 auto; }
+  .also .label { margin-bottom: 22px; color: #6b6b6b; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: #FBF9F3; border: 1px solid rgba(17,17,17,0.08); border-radius: 16px; padding: 28px; }
+  .card.span { grid-column: 1 / -1; }
+
+  /* Service cards (blue) — same design for all four services */
+  .card.service { background: var(--blue); border-color: var(--blue); }
+  .service-name { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: #fff; font-size: clamp(18px, 2.4vw, 24px); line-height: 1.14; font-weight: 800; margin: 0 0 12px; }
+  .service-desc { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0; }
   .service-keys { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
-  .service-keys span { border: 1px solid var(--blue); color: var(--blue); border-radius: 999px; padding: 7px 16px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+  .service-keys span { border: 1px solid var(--lime); color: var(--lime); border-radius: 999px; padding: 6px 14px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+
+  /* The collab difference (USPs) */
+  .collab { margin-top: 4px; }
+  .why-label { color: #6b6b6b; margin: 40px 2px 22px; text-align: center; }
+  .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .why-title { font-family: 'Now', sans-serif; font-weight: 500; color: #3f3f3f; font-size: 16px; line-height: 1.35; margin: 0 0 10px; }
+  .why-desc { font-size: 15px; line-height: 1.65; color: #666; margin: 0; }
+  .card.wide { grid-column: 1 / -1; }
 
   /* Statement */
   .statement { background: var(--blue); padding: 96px 24px; text-align: center; }
@@ -130,9 +144,10 @@
 
   footer { background: var(--ink); color: var(--cream); text-align: center; padding: 18px; font-size: 13px; }
 
+  @media (max-width: 720px) {
+    .grid, .why-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
-    .row { flex-wrap: wrap; }
-    .row .desc { width: 100%; text-align: left; padding-left: 48px; }
     .hero .top-bar { padding: 18px 20px; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -171,38 +186,61 @@
 <section class="what">
   <div class="inner">
     <p class="label caption">WHAT WE ACTUALLY DO</p>
-    <div class="rows">
-      <div class="row">
-        <span class="num">01</span>
-        <div class="service">
-          <h3 class="name">Digital Marketing Team</h3>
-          <p class="service-desc">Your external, internal digital department. Our clients work directly with the people who both think and execute (there are no Key Account Managers), allowing for greater proximity, agility and alignment throughout the entire process.</p>
-          <div class="service-keys"><span>strategy</span><span>growth</span><span>collab</span></div>
+
+    <div class="grid">
+      <div class="card service span">
+        <h3 class="service-name">Digital Marketing Team</h3>
+        <p class="service-desc">Your external, internal digital department. Our clients work directly with the people who both think and execute (there are no Key Account Managers), allowing for greater proximity, agility and alignment throughout the entire process.</p>
+        <div class="service-keys"><span>strategy</span><span>growth</span><span>collab</span></div>
+      </div>
+    </div>
+
+    <div class="collab">
+      <p class="why-label caption">THE COLLAB DIFFERENCE</p>
+      <div class="why-grid">
+        <div class="card">
+          <h3 class="why-title">We become part of your team.</h3>
+          <p class="why-desc">We're not an external agency. We work like an internal team, and treat every project as if it were our own.</p>
+        </div>
+        <div class="card">
+          <h3 class="why-title">Growth over deliverables.</h3>
+          <p class="why-desc">Your success is our success. Every recommendation we make is driven by one goal: growing your business.</p>
+        </div>
+        <div class="card">
+          <h3 class="why-title">Priorities over packages.</h3>
+          <p class="why-desc">No fixed checklists. No "2 posts, 1 newsletter, 1 blog article." We focus on what will have the biggest impact on your business, even if that changes from month to month.</p>
+        </div>
+        <div class="card">
+          <h3 class="why-title">Experts, not account managers.</h3>
+          <p class="why-desc">You'll always work directly with the people thinking, creating and executing the work. No middlemen. No unnecessary layers.</p>
+        </div>
+        <div class="card wide">
+          <h3 class="why-title">Business first. Marketing second.</h3>
+          <p class="why-desc">We make marketing decisions based on business goals, not marketing trends.</p>
         </div>
       </div>
-      <div class="row">
-        <span class="num">02</span>
-        <div class="service">
-          <h3 class="name">Events that go Digital</h3>
-          <p class="service-desc">We capture and amplify your events through live coverage and premium content, extending their impact far beyond the day.</p>
-          <div class="service-keys"><span>live coverage</span><span>content</span><span>social amplification</span></div>
-        </div>
+    </div>
+  </div>
+</section>
+
+<section class="also">
+  <div class="inner">
+    <p class="label caption">WHAT WE ALSO DO</p>
+    <div class="grid">
+      <div class="card service">
+        <h3 class="service-name">Events that go Digital</h3>
+        <p class="service-desc">We capture and amplify your events through live coverage and premium content, extending their impact far beyond the day.</p>
+        <div class="service-keys"><span>live coverage</span><span>content</span><span>social amplification</span></div>
       </div>
-      <div class="row">
-        <span class="num">03</span>
-        <div class="service">
-          <h3 class="name">On-Demand Reels</h3>
-          <p class="service-desc">Need fresh content for your social channels? Book a content session and our creators will produce authentic, on-brand organic reels directly at your location, ready to post.</p>
-          <div class="service-keys"><span>organic videos</span><span>trends</span><span>content creation</span></div>
-        </div>
+      <div class="card service">
+        <h3 class="service-name">On-Demand Reels</h3>
+        <p class="service-desc">Need fresh content for your social channels? Book a content session and our creators will produce authentic, on-brand organic reels directly at your location, ready to post.</p>
+        <div class="service-keys"><span>organic videos</span><span>trends</span><span>content creation</span></div>
       </div>
-      <div class="row">
-        <span class="num">04</span>
-        <div class="service">
-          <h3 class="name">Business Consultancy</h3>
-          <p class="service-desc">A strategic working session where we analyse your business, identify opportunities and challenges, and provide practical business recommendations you can start implementing immediately.</p>
-          <div class="service-keys"><span>strategy</span><span>growth</span><span>action plan</span></div>
-        </div>
+      <div class="card service">
+        <h3 class="service-name">Business Consultancy</h3>
+        <p class="service-desc">A strategic working session where we analyse your business, identify opportunities and challenges, and provide practical business recommendations you can start implementing immediately.</p>
+        <div class="service-keys"><span>strategy</span><span>growth</span><span>action plan</span></div>
       </div>
     </div>
   </div>
@@ -239,7 +277,9 @@ fetch('https://feeds.behold.so/XQN0kLlcmiVEgD0EtniY')
     if (!posts.length) return;
     const grid = document.getElementById('ig-grid');
     grid.innerHTML = posts.map(p => {
-      const img = p.thumbnailUrl || p.mediaUrl;
+      const s = p.sizes || {};
+      const sized = (s.medium || s.small || s.large || s.full || {}).mediaUrl;
+      const img = sized || p.thumbnailUrl || p.mediaUrl;
       const alt = (p.caption || 'Instagram post').split('\n')[0].slice(0, 100);
       return '<a href="' + p.permalink + '" target="_blank" rel="noopener"><img src="' + img + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
     }).join('');
