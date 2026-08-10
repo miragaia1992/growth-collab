@@ -273,17 +273,32 @@
 fetch('https://feeds.behold.so/XQN0kLlcmiVEgD0EtniY')
   .then(r => r.json())
   .then(data => {
-    const posts = (data.posts || []).slice(0, 3);
+    const posts = data.posts || [];
     if (!posts.length) return;
-    const grid = document.getElementById('ig-grid');
-    grid.innerHTML = posts.map(p => {
+    // Behold's proxied "sizes" URLs are stable (raw scontent.cdninstagram URLs expire);
+    // still, any single image can 502, so we only render posts whose image actually loads.
+    const pickUrl = p => {
       const s = p.sizes || {};
-      const sized = (s.medium || s.small || s.large || s.full || {}).mediaUrl;
-      const img = sized || p.thumbnailUrl || p.mediaUrl;
-      const alt = (p.caption || 'Instagram post').split('\n')[0].slice(0, 100);
-      return '<a href="' + p.permalink + '" target="_blank" rel="noopener"><img src="' + img + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
-    }).join('');
-    document.getElementById('instagram').style.display = 'block';
+      return (s.medium || s.small || s.large || s.full || {}).mediaUrl || p.thumbnailUrl || p.mediaUrl;
+    };
+    const probe = p => new Promise(resolve => {
+      const url = pickUrl(p);
+      if (!url) return resolve(null);
+      const im = new Image();
+      im.onload = () => resolve({ p, url });
+      im.onerror = () => resolve(null);
+      im.src = url;
+    });
+    Promise.all(posts.map(probe)).then(results => {
+      const ok = results.filter(Boolean).slice(0, 3);
+      if (!ok.length) return;
+      const grid = document.getElementById('ig-grid');
+      grid.innerHTML = ok.map(({ p, url }) => {
+        const alt = (p.caption || 'Instagram post').split('\n')[0].slice(0, 100);
+        return '<a href="' + p.permalink + '" target="_blank" rel="noopener"><img src="' + url + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
+      }).join('');
+      document.getElementById('instagram').style.display = 'block';
+    });
   })
   .catch(() => {});
 </script>
