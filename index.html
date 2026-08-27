@@ -263,7 +263,7 @@
   <div class="inner">
     <p class="label caption">LATEST ON INSTAGRAM</p>
     <div class="grid" id="ig-grid"></div>
-    <a class="follow" href="https://www.instagram.com/growth.collab/" target="_blank" rel="noopener">@GROWTH.COLLAB →</a>
+    <a class="follow" href="https://www.instagram.com/growth.collab/" target="_blank" rel="noopener" data-umami-event="instagram-click">@GROWTH.COLLAB →</a>
   </div>
 </section>
 
@@ -303,7 +303,7 @@ fetch('https://feeds.behold.so/XQN0kLlcmiVEgD0EtniY')
       const grid = document.getElementById('ig-grid');
       grid.innerHTML = ok.map(({ p, url }) => {
         const alt = (p.caption || 'Instagram post').split('\n')[0].slice(0, 100);
-        return '<a href="' + p.permalink + '" target="_blank" rel="noopener"><img src="' + url + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
+        return '<a href="' + p.permalink + '" target="_blank" rel="noopener" data-umami-event="instagram-post-click"><img src="' + url + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy"></a>';
       }).join('');
       document.getElementById('instagram').style.display = 'block';
     });
