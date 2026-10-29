@@ -120,7 +120,8 @@
   /* Service card that links to its own page */
   a.card.service { display: block; text-decoration: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
   a.card.service:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(35,52,224,0.22); }
-  .service-more { display: inline-block; margin-top: 20px; font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--lime); font-size: 11px; letter-spacing: 0.08em; }
+  .service-more { display: inline-block; margin-top: 24px; background: var(--lime); color: var(--blue); font-family: 'Monument Extended', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 0.06em; padding: 13px 26px; border-radius: 999px; transition: background 0.2s ease, transform 0.15s ease; }
+  a.card.service:hover .service-more { background: #fff; transform: translateY(-1px); }
 
   /* The collab difference (USPs) */
   .collab { margin-top: 4px; }
