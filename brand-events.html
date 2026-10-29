@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Events Live Coverage — Growth Collab</title>
+<style>
+  @font-face { font-family: 'Monument Extended'; src: url('assets/fonts/MonumentExtended-Ultrabold.otf') format('opentype'); font-weight: 800; font-display: swap; }
+  @font-face { font-family: 'Monument Extended'; src: url('assets/fonts/MonumentExtended-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Now'; src: url('assets/fonts/Now-Light.otf') format('opentype'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Now'; src: url('assets/fonts/Now-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Now'; src: url('assets/fonts/Now-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+  :root { --blue: #2334E0; --lime: #c1ff72; --cream: #E9E4D6; --ink: #111111; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Now', sans-serif; background: var(--cream); color: var(--ink); }
+  .caption { font-size: 11px; letter-spacing: 0.3em; font-weight: 500; }
+
+  /* Hero — same component as homepage */
+  .hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; background: #1c2230; }
+  .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero .overlay { position: absolute; inset: 0; background: rgba(18, 24, 44, 0.5); }
+  .hero .top-bar { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; z-index: 2; }
+  .hero .top-bar .brand img { height: 30px; display: block; margin-top: 9px; }
+  .hero .top-bar .tag { font-size: 11px; letter-spacing: 0.25em; color: var(--lime); font-weight: 500; }
+  .hero .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px; z-index: 2; }
+  .hero .center .big { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--lime); font-size: clamp(30px, 6.2vw, 76px); line-height: 1.04; font-weight: 800; }
+  .hero .center .big .w { color: #fff; }
+  .hero .center .sub { color: var(--cream); font-family: 'Now', sans-serif; font-weight: 300; font-size: clamp(15px, 2vw, 21px); letter-spacing: 0.02em; margin-top: 18px; }
+  .hero .center .thin { color: var(--cream); text-transform: uppercase; font-weight: 300; letter-spacing: 0.04em; font-size: clamp(24px, 5vw, 62px); line-height: 1.15; font-family: 'Now', sans-serif; }
+  .hero .center .hero-cta { margin-top: 34px; background: var(--lime); color: var(--blue); font-family: 'Monument Extended', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: 0.06em; padding: 15px 32px; text-decoration: none; transition: background 0.25s ease, transform 0.15s ease; }
+  .hero .center .hero-cta:hover { background: #fff; transform: translateY(-2px); }
+  .hero .center .hero-cta:active { transform: scale(0.97); }
+  .hero .bottom { position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; z-index: 2; }
+  .hero .bottom p { font-size: 11px; letter-spacing: 0.3em; color: var(--lime); font-weight: 500; }
+
+  /* Marquee — identical to homepage */
+  .marquee { background: var(--lime); overflow: hidden; padding: 13px 0; white-space: nowrap; }
+  .marquee .track { display: inline-block; font-family: 'Monument Extended', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--blue); animation: scroll 22s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Section helpers */
+  .inner { max-width: 880px; margin: 0 auto; }
+  .label { margin-bottom: 22px; color: #6b6b6b; }
+
+  /* Gallery — same treatment as homepage IG grid */
+  .ig { background: var(--cream); padding: 72px 24px 24px; }
+  .ig .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .ig .grid a { display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #ddd8c9; }
+  .ig .grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease, opacity 0.35s ease; }
+  .ig .grid a:hover img { transform: scale(1.04); opacity: 0.92; }
+
+  /* Split block — built from homepage card + keys language */
+  .split { background: var(--cream); padding: 56px 24px 72px; }
+  .split .inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 44px; }
+  .split .shot { aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #ddd8c9; }
+  .split .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .split h2 { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(18px, 2.8vw, 28px); line-height: 1.12; font-weight: 800; margin: 0 0 20px; }
+  .split .keys { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+  .split .keys span { border: 1px solid var(--blue); color: var(--blue); border-radius: 999px; padding: 7px 16px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+  .split .link { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: 12px; letter-spacing: 0.05em; text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 4px; }
+
+  /* Statement — identical to homepage */
+  .statement { background: var(--blue); padding: 96px 24px; text-align: center; }
+  .statement h2 { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; font-size: clamp(20px, 4vw, 40px); line-height: 1.22; font-weight: 800; color: var(--cream); }
+  .statement h2 span { color: var(--lime); }
+
+  /* CTA — identical to homepage */
+  .cta { background: var(--lime); padding: 88px 24px; text-align: center; }
+  .cta h2 { font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--blue); font-size: clamp(20px, 4.2vw, 42px); line-height: 1.2; font-weight: 800; margin-bottom: 28px; }
+  .cta a { background: var(--blue); color: var(--lime); font-family: 'Monument Extended', sans-serif; font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 0.06em; padding: 17px 34px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .cta a:hover { background: #1a28b8; }
+  .cta a svg { width: 18px; height: 18px; }
+
+  footer { background: var(--ink); color: var(--cream); text-align: center; padding: 18px; font-size: 13px; }
+
+  @media (max-width: 720px){ .split .inner { grid-template-columns: 1fr; gap: 28px; } .split .shot { max-width: 360px; margin: 0 auto; } }
+  @media (max-width: 560px){ .ig .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (prefers-reduced-motion: reduce){ .marquee .track { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <video autoplay muted loop playsinline aria-hidden="true"><source src="assets/hero.mp4" type="video/mp4"></video>
+  <div class="overlay"></div>
+  <div class="top-bar">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="Growth Collab"></a>
+    <span class="tag">LIVE COVERAGE</span>
+  </div>
+  <div class="center">
+    <h1 style="display:contents;">
+      <span class="big">We cover it.<br>We post it. <span class="w">Live.</span></span>
+    </h1>
+    <a class="hero-cta" href="https://wa.me/351917245807" target="_blank" rel="noopener">If it's not online, it didn't happen</a>
+  </div>
+  <div class="bottom"><p>BRAND EVENTS · LIVE COVERAGE</p></div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <span class="track">&nbsp;LAUNCHES • ACTIVATIONS • POP-UPS • PRESS DAYS • LIVE PHOTOS • REELS • STORIES • SAME-DAY EDITS • LAUNCHES • ACTIVATIONS • POP-UPS • PRESS DAYS • LIVE PHOTOS • REELS • STORIES • SAME-DAY EDITS •</span>
+</div>
+
+<section class="split">
+  <div class="inner">
+    <div class="shot"><img id="split-img" src="" alt=""></div>
+    <div class="text">
+      <h2>Everything you need, posted on the day.</h2>
+      <div class="keys"><span>live photos</span><span>reels</span><span>stories</span><span>speed interviews</span><span>crowd dynamics</span><span>same-day edit</span></div>
+      <a class="link" href="https://wa.me/351917245807" target="_blank" rel="noopener">Plan your brand event →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Got an event coming up?</h2>
+  <a href="https://wa.me/351917245807" target="_blank" rel="noopener">
+    <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    Plan your brand event
+  </a>
+</section>
+
+<footer>© 2026 Growth Collab</footer>
+
+<script>
+fetch('https://feeds.behold.so/XQN0kLlcmiVEgD0EtniY')
+  .then(r => r.json())
+  .then(data => {
+    const posts = data.posts || [];
+    if (!posts.length) return;
+    const pickUrl = p => {
+      const s = p.sizes || {};
+      return (s.medium || s.small || s.large || s.full || {}).mediaUrl || p.thumbnailUrl || p.mediaUrl;
+    };
+    const probe = p => new Promise(resolve => {
+      const url = pickUrl(p);
+      if (!url) return resolve(null);
+      const im = new Image();
+      im.onload = () => resolve({ p, url });
+      im.onerror = () => resolve(null);
+      im.src = url;
+    });
+    Promise.all(posts.map(probe)).then(results => {
+      const ok = results.filter(Boolean);
+      if (!ok.length) return;
+      const split = document.getElementById('split-img');
+      if (split) split.src = (ok[1] || ok[0]).url;
+    });
+  })
+  .catch(() => {});
+</script>
+
+</body>
+</html>

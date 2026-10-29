@@ -117,6 +117,10 @@
   .service-desc { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.85); margin: 0; }
   .service-keys { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
   .service-keys span { border: 1px solid var(--lime); color: var(--lime); border-radius: 999px; padding: 6px 14px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+  /* Service card that links to its own page */
+  a.card.service { display: block; text-decoration: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  a.card.service:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(35,52,224,0.22); }
+  .service-more { display: inline-block; margin-top: 20px; font-family: 'Monument Extended', sans-serif; text-transform: uppercase; color: var(--lime); font-size: 11px; letter-spacing: 0.08em; }
 
   /* The collab difference (USPs) */
   .collab { margin-top: 4px; }
@@ -235,11 +239,12 @@
   <div class="inner">
     <p class="label caption">WHAT WE ALSO DO</p>
     <div class="grid">
-      <div class="card service">
+      <a class="card service" href="brand-events.html">
         <h3 class="service-name">Events that go Digital</h3>
         <p class="service-desc">We capture and amplify your events through live coverage and premium content, extending their impact far beyond the day.</p>
         <div class="service-keys"><span>live coverage</span><span>content</span><span>social amplification</span></div>
-      </div>
+        <span class="service-more">See how it works →</span>
+      </a>
       <div class="card service">
         <h3 class="service-name">On-Demand Reels</h3>
         <p class="service-desc">Need fresh content for your social channels? Book a content session and our creators will produce authentic, on-brand organic reels directly at your location, ready to post.</p>
